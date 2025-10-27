@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Antony Bahia de Carvalho</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+</head>
+<body>
+  <div class="vanta-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img src="logo.png" alt="Logo Antony Bahia">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">Über mich</a>
+      <a href="projects.html">Projekte</a>
+      <a href="blogs.html">Blogs</a>
+      <a href="social.html">Social Media</a>
+      <a href="contact.html">Kontakt</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="typewriter">
+        <h1>Willkommen in der Welt der Technologie!</h1>
+      </div>
+      <p>Entdecke spannende Projekte, innovative Ideen und tiefgründige Blogs über die digitale Zukunft.</p>
+      <a href="about.html" class="btn">Mehr über mich</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      © 2025 Antony Bahia de Carvalho. Alle Rechte vorbehalten.
+    </div>
+  </div>
+
+  <script>
+    // Vanta.js Hintergrund
+    document.addEventListener("DOMContentLoaded", () => {
+      VANTA.WAVES({
+        el: ".vanta-container",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        shininess: 20.00, /* Mehr Glanz */
+        waveHeight: 15.00, /* Reduzierte Wellenhöhe */
+        waveSpeed: 0.5 /* Langsamere Bewegung */
+      });
+    });
+  </script>
+</body>
+</html>
