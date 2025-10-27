@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt - Antony Bahia de Carvalho</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+  <style>
+    /* Allgemeine Stile */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+        color: white;
+        overflow: hidden;
+    }
+
+    /* Vanta-Hintergrund */
+    .vanta-container {
+        display: flex;
+        height: 100vh;
+        position: relative;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 250px;
+        background-color: rgba(10, 10, 10, 0.9);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar img {
+        width: 100px;
+        margin-bottom: 20px;
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 20px;
+        margin: 10px 0;
+        border-radius: 4px;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        width: 80%;
+    }
+
+    .sidebar a.active {
+        font-weight: bold;
+        border-left: 4px solid rgba(0, 122, 255, 1);
+        padding-left: 16px;
+    }
+
+    .sidebar a:hover {
+        background: rgba(0, 122, 255, 0.3);
+    }
+
+    /* Main Content */
+    .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    /* Titel und Beschreibung */
+    .main-content h1 {
+        font-size: 3.5em;
+        margin-bottom: 10px;
+        color: white;
+        text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .main-content p {
+        font-size: 1.2em;
+        margin-bottom: 40px;
+        max-width: 700px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Kontaktformular */
+    .contact-form {
+        max-width: 600px;
+        width: 100%;
+        background: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(10, 10, 10, 0.8));
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    /* Formular Felder */
+    .contact-form .form-group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .contact-form label {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1em;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        resize: none;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.8);
+    }
+
+    .contact-form input:hover,
+    .contact-form textarea:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Button */
+    .contact-form button {
+        padding: 14px 24px;
+        background: linear-gradient(90deg, rgba(0, 123, 255, 1), rgba(0, 255, 255, 1));
+        color: white;
+        font-size: 1.1em;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .contact-form button:hover {
+        transform: scale(1.05);
+        background: linear-gradient(90deg, rgba(0, 102, 255, 1), rgba(0, 200, 255, 1));
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.8);
+    }
+
+    .contact-form button:active {
+        background: linear-gradient(90deg, rgba(0, 80, 200, 1), rgba(0, 180, 255, 1));
+        transform: translateY(2px);
+        box-shadow: 0 2px 6px rgba(0, 80, 200, 0.4);
+    }
+
+    /* Footer */
+    .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 10px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.85em;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="vanta-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img src="logo.png" alt="Logo Antony Bahia">
+      <a href="index.html">Home</a>
+      <a href="about.html">Über mich</a>
+      <a href="projects.html">Projekte</a>
+      <a href="contact.html" class="active">Kontakt</a>
+      <a href="impressum.html">Impressum</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1>Kontakt</h1>
+      <p>Haben Sie Fragen, Anregungen oder möchten Sie mit mir zusammenarbeiten? Schreiben Sie mir einfach eine Nachricht!</p>
+      <form action="https://formspree.io/f/xnnnlqaq" method="POST" class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Ihr Name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">E-Mail</label>
+          <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Nachricht</label>
+          <textarea id="message" name="message" rows="5" placeholder="Ihre Nachricht" required></textarea>
+        </div>
+        <button type="submit">Nachricht senden</button>
+      </form>
+    </div>
+
+    <div class="footer">
+      © 2025 Antony Bahia de Carvalho. Alle Rechte vorbehalten.
+    </div>
+  </div>
+
+  <script>
+    // Vanta.js Hintergrund
+    document.addEventListener("DOMContentLoaded", () => {
+      VANTA.WAVES({
+        el: ".vanta-container",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        shininess: 20.00,
+        waveHeight: 15.00,
+        waveSpeed: 0.5
+      });
+    });
+  </script>
+</body>
+</html>
